@@ -48,7 +48,7 @@ class Data {
   num? priceAfterDiscount;
   String? imageCover;
   Category? category;
-  Null brand;
+  Category? brand;
   num? ratingsAverage;
   String? createdAt;
   String? updatedAt;
@@ -94,7 +94,7 @@ class Data {
     imageCover = json['imageCover'];
     category =
         json['category'] != null ? Category.fromJson(json['category']) : null;
-    brand = json['brand'];
+    brand = json['brand'] != null ? Category.fromJson(json['brand']) : null;
     ratingsAverage = json['ratingsAverage'];
     createdAt = json['createdAt'];
     updatedAt = json['updatedAt'];
