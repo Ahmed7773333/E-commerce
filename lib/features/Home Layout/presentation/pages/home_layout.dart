@@ -1,25 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:shop_app/core/api/api_manager.dart';
-import 'package:shop_app/features/Home%20Layout/data/datasources/remote/remote_ds_impl.dart';
-import 'package:shop_app/features/Home%20Layout/data/repositories/home_repo_impl.dart';
-import 'package:shop_app/features/Home%20Layout/domain/usecases/add_cart.dart';
-import 'package:shop_app/features/Home%20Layout/domain/usecases/add_wish_list.dart';
-import 'package:shop_app/features/Home%20Layout/domain/usecases/delete_cart.dart';
-import 'package:shop_app/features/Home%20Layout/domain/usecases/delete_wish_list.dart';
-import 'package:shop_app/features/Home%20Layout/domain/usecases/get_all_categories.dart';
-import 'package:shop_app/features/Home%20Layout/domain/usecases/get_all_products.dart';
-import 'package:shop_app/features/Home%20Layout/domain/usecases/get_cart_list.dart';
-import 'package:shop_app/features/Home%20Layout/domain/usecases/get_wish_list.dart';
-import 'package:shop_app/features/Home%20Layout/presentation/pages/tabs/categories.dart';
 import 'package:shop_app/features/Home%20Layout/presentation/pages/tabs/favorite.dart';
 import 'package:shop_app/features/Home%20Layout/presentation/pages/tabs/home.dart';
 import 'package:shop_app/features/Home%20Layout/presentation/pages/tabs/profile.dart';
 
 import '../../../../core/utils/app_images.dart';
+import '../../../../core/utils/get_itt.dart';
 import '../bloc/home_layout_bloc.dart';
 import '../widgets/active_non_active.dart';
+import 'categories.dart';
 
 class HomeLayout extends StatefulWidget {
   const HomeLayout({super.key});
@@ -37,15 +27,7 @@ class _HomeLayoutState extends State<HomeLayout> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => HomeLayoutBloc(
-          GetWishListUseCase(HomeRepoImpl(HomeRemoteDsImple(ApiManager()))),
-          GetAllCategories(HomeRepoImpl(HomeRemoteDsImple(ApiManager()))),
-          GetAllProducts(HomeRepoImpl(HomeRemoteDsImple(ApiManager()))),
-          GetCartListUseCase(HomeRepoImpl(HomeRemoteDsImple(ApiManager()))),
-          AddCartUseCase(HomeRepoImpl(HomeRemoteDsImple(ApiManager()))),
-          DeleteCartUseCase(HomeRepoImpl(HomeRemoteDsImple(ApiManager()))),
-          AddWishListUseCase(HomeRepoImpl(HomeRemoteDsImple(ApiManager()))),
-          DeleteWishListUseCase(HomeRepoImpl(HomeRemoteDsImple(ApiManager()))))
+      create: (context) => sl<HomeLayoutBloc>()
         ..add(GetAllCategoriesEvent())
         ..add(GetAllProductsEvent())
         ..add(GetWishListEvent())

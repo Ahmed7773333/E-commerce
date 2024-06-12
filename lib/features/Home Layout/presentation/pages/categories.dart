@@ -6,7 +6,7 @@ import 'package:shop_app/features/Home%20Layout/presentation/widgets/product_ite
 import 'package:shop_app/features/Home%20Layout/presentation/widgets/route_logo.dart';
 import 'package:shop_app/features/Home%20Layout/presentation/widgets/search_field.dart';
 import '../../../../../core/utils/app_colors.dart';
-import '../../bloc/home_layout_bloc.dart';
+import '../bloc/home_layout_bloc.dart';
 
 // ignore: must_be_immutable
 class CategoriesTab extends StatefulWidget {
